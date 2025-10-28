@@ -261,12 +261,12 @@ function setupScene(canvas: HTMLCanvasElement): SceneSetup {
 function createDetailedStar(): THREE.Group {
   const group = new THREE.Group();
   
-  const geometry = new THREE.SphereGeometry(0.5, 16, 16);
+  const geometry = new THREE.SphereGeometry(0.05, 16, 16);
   const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
   const star = new THREE.Mesh(geometry, material);
   group.add(star);
   
-  const glowGeometry = new THREE.SphereGeometry(0.7, 16, 16);
+  const glowGeometry = new THREE.SphereGeometry(0.1, 16, 16);
   const glowMaterial = new THREE.MeshBasicMaterial({
     color: 0xffff00,
     transparent: true,
@@ -298,7 +298,7 @@ function createGalaxy(scene: THREE.Scene, starData: StarData[], camera: THREE.Ca
   
   const material = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.8,
+    size: 0.2,
     sizeAttenuation: true,
     transparent: true,
     opacity: 0.8

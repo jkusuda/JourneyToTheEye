@@ -2,6 +2,8 @@
 import csv
 import numpy as np
 from scipy.spatial import KDTree
+import math
+import heapq
 
 class StarNode:
     def __init__(self, id, x, y, z, **metadata):
@@ -57,18 +59,8 @@ def build_kdtree_data(nodes):
         'count': len(nodes)
     }
 
-def build_graph(nodes, fuel, use_kdtree=True):
+def build_graph(nodes, fuel):
     """Build adjacency graph using k-d tree for efficiency"""
-    if not use_kdtree:
-        # Your original O(n²) method - keep for small datasets
-        graph = []
-        for i in range(len(nodes)):
-            graph.append([])
-            for j in range(len(nodes)):
-                if i != j and nodes[i].distance(nodes[j]) <= fuel:
-                    graph[i].append(j)  # Store index, not 1
-        return graph
-    
     # Efficient k-d tree method - O(n log n)
     positions = np.array([[node.x, node.y, node.z] for node in nodes])
     kdtree = KDTree(positions)
@@ -97,3 +89,58 @@ def get_neighbors(nodes, kdtree, star_index, fuel):
     ]
     
     return valid_neighbors
+
+def distance(nodes, star1, star2):
+    star1 = nodes[star1]
+    star2 = nodes[star2]
+    star1 = [star1.x, star1.y, star1.z]
+    star2 = [star2.x, star2.y, star2.z]
+    return math.dist(star1, star2)
+
+def djikstras(nodes, graph, startStar, goalStar):
+    dist = []
+    min_heap = []
+    parent = {}
+    sequence = []
+    parent[startStar] = None
+    heapq.heappush(min_heap, (0, startStar))
+    for i in range(len(graph)):
+        if i == startStar:
+            dist.append(0)
+        else:
+            dist.append(math.inf)
+
+    while min_heap:
+        d, u = heapq.heappop(min_heap)
+        if dist[u] < d:
+            continue
+        if u == goalStar:
+            #found path (figure out if needs to be changed)
+            break
+        for v in graph[u]:
+            new_dist = d + distance(nodes, u, v)
+            if dist[v] > new_dist:
+                dist[v] = new_dist
+                parent[v] = u
+                heapq.heappush(min_heap, (new_dist, v))
+
+    if dist[goalStar] == math.inf:
+        return ([], -1)
+
+    current = goalStar
+    while current != startStar:
+        sequence.insert(0, current)
+        current = parent[current]
+    sequence.insert(0, startStar)
+
+    return (sequence, dist[goalStar])
+
+        
+
+nodes = load_stars("public/stars.csv")
+graph = build_graph(nodes, 30)
+sequence, dist = djikstras(nodes, graph, 0, 1)
+print(dist, sequence)
+for i in sequence:
+    star = nodes[i]
+    print(star.x, star.y, star.z)
