@@ -7,9 +7,6 @@ An interactive 3D web application that visualizes over 100,000 stars from a CSV 
 ## See our project live here!!
 https://journey-to-the-eye.vercel.app/
 
-<img width="2851" height="1537" alt="image" src="https://github.com/user-attachments/assets/4bec7784-cceb-4660-a2d7-81ed1c2739bb" />
-
-
 ## 🚀 Local Development
 
 ### Prerequisites
@@ -78,3 +75,9 @@ Edit `src/constants.ts` to adjust:
 - **Vite** - Build tool
 - **FastAPI** - Python backend framework
 - **NumPy/SciPy** - Scientific computing and k-d trees
+
+## Gallery
+<img width="2851" height="1537" alt="image" src="https://github.com/user-attachments/assets/4bec7784-cceb-4660-a2d7-81ed1c2739bb" />
+<img width="2853" height="1534" alt="image" src="https://github.com/user-attachments/assets/40bc627f-cbde-4066-aac3-b6ee03bf9428" />
+<img width="2849" height="1532" alt="image" src="https://github.com/user-attachments/assets/2e532d86-f989-45e0-bf04-eee12e7faf5e" />
+
