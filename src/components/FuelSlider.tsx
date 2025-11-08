@@ -10,8 +10,8 @@ interface FuelSliderProps {
 
 export function FuelSlider({ 
   min = 0, 
-  max = 50, 
-  defaultValue = 25,
+  max = 30, 
+  defaultValue = 15,
   onChange,
 }: FuelSliderProps) {
   const [value, setValue] = useState(defaultValue);
