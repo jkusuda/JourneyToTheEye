@@ -6,7 +6,7 @@ export default function SoundToggle() {
 
   useEffect(() => {
     // Load the audio file
-    audioRef.current = new Audio('../public/space.mp3');
+    audioRef.current = new Audio('space.mp3');
     audioRef.current.volume = 0.4;
 
     return () => {
@@ -28,15 +28,20 @@ export default function SoundToggle() {
   };
 
   return (
-    <div style={{
-  position: 'fixed',
-  bottom: '20px',
-  right: '20px',
-  zIndex: 9999
-}}>
-    <div className="sound-toggle" onClick={(e) => e.stopPropagation()}></div>
+    <div 
+      className="sound-toggle"
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 9999
+      }}
+    >
       <button
-        onClick={toggleSound}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleSound();
+        }}
         className="text-3xl select-none cursor-pointer transition-transform hover:scale-110"
         title={isPlaying ? 'Turn sound off' : 'Turn sound on'}
       >
@@ -44,4 +49,4 @@ export default function SoundToggle() {
       </button>
     </div>
   );
-} 
+}

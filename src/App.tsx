@@ -19,7 +19,7 @@ import SoundToggle from './components/SoundToggle';
 import type { StarData, LODSystem } from './types';
 import './App.css';
 
-const UI_SELECTORS = '.info-box, .star-popup, .direction-input, .fuel-slider-wrapper, .about-main, .dev-block-individual';
+const UI_SELECTORS = '.info-box, .star-popup, .direction-input, .fuel-slider-wrapper, .about-main, .dev-block-individual, .sound-toggle';
 
 function App() {
   const { stars, loading, error } = useFetchStars();
