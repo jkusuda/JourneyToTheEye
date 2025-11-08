@@ -404,8 +404,8 @@ const stopTimer = (algorithm: 'dijkstra' | 'astar') => {
 
       <FuelSlider 
         min={0}
-        max={50}
-        defaultValue={25}
+        max={30}
+        defaultValue={15}
         onChange={(value) => setFuelLimit(value)}
       />
       <SoundToggle />
