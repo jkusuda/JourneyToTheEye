@@ -1,10 +1,16 @@
 # Journey To The Eye - Star Visualization ✨
 
-An interactive 3D web application that visualizes over 100,000 stars from a CSV dataset. Built with React, Three.js, and Python backend for efficient spatial queries.
+An interactive 3D web application that visualizes over 100,000 stars from a CSV dataset. Built with React, Three.js, and Python, deployed with Vercel.
 
 **Inspired by the game Outer Wilds** | Built for COP3530 Project 2
 
-## 🚀 Setup
+## See our project live here!!
+https://journey-to-the-eye.vercel.app/
+
+<img width="2851" height="1537" alt="image" src="https://github.com/user-attachments/assets/4bec7784-cceb-4660-a2d7-81ed1c2739bb" />
+
+
+## 🚀 Local Development
 
 ### Prerequisites
 
@@ -12,40 +18,9 @@ An interactive 3D web application that visualizes over 100,000 stars from a CSV 
 - **Python** (v3.8 or higher)
 - **npm** or **yarn**
 
-### Backend Setup
+### Setup
 
-1. **Navigate to the project directory**
-   ```bash
-   cd JourneyToTheEye
-   ```
-
-2. **Create a Python virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   
-   # On Windows
-   venv\Scripts\activate
-   
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
-
-3. **Install Python dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Start the backend server**
-   ```bash
-   cd src/backend
-   uvicorn api:app --reload
-   ```
-   
-   The backend will be available at `http://localhost:8000`
-
-### Frontend Setup
-
-1. **Open a new terminal** (keep backend running)
+1. **Make sure the backend is running** https://github.com/jkusuda/dsa-project-backend
 
 2. **Navigate to the project directory**
    ```bash
@@ -73,30 +48,6 @@ An interactive 3D web application that visualizes over 100,000 stars from a CSV 
 - **Pan**: Right-click and drag
 - **Select star**: Click on any star to zoom in and highlight it
 
-## 🛠️ Development
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-The optimized files will be in the `dist/` directory.
-
-### Run Linter
-
-```bash
-npm run lint
-```
-
-### Backend API Endpoints
-
-- `GET /` - Health check
-- `GET /stars/all` - Get all star data with metadata
-- `GET /graph?fuel=5.0` - Build adjacency graph with fuel parameter
-- `GET /stars/{star_id}/neighbors?fuel=5.0` - Get neighbors of specific star
-- `GET /stars/region` - Query stars in a bounding box
-
 ## 🔧 Configuration
 
 Edit `src/constants.ts` to adjust:
@@ -112,19 +63,12 @@ Edit `src/constants.ts` to adjust:
 
 - Make sure the backend server is running on port 8000
 - Check that `public/stars.csv` exists
-- Verify Python dependencies are installed
 
 ### Poor performance
 
 - Reduce `MAX_DETAILED_STARS` in `constants.ts`
 - Increase `DETAIL_DISTANCE` to show detailed stars only when closer
 - Close other browser tabs/applications
-
-### Backend import errors
-
-- Ensure you're in the virtual environment
-- Verify all packages in `requirements.txt` are installed
-- Check Python version (3.8+)
 
 ## 📝 Technologies Used
 
